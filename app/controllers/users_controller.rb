@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+ 
+
   def index
   end
 
@@ -6,9 +8,12 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
+    @user = User.create (user_params)
+    redirect_to @user
   end
 
   def read
@@ -19,4 +24,9 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
+  def user_params
+    params.require(:user).permit(:fname, :lname, :email, :password)
+  end
+
 end
