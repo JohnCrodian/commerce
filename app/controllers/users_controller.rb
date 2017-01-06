@@ -13,6 +13,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create (user_params)
+    Wishlist.create(user_id: @user.id)
+    Cart.create(user_id: @user.id)
     redirect_to @user
   end
 
@@ -23,6 +25,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+
   end
 
   def user_params

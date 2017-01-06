@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
 
   delete '/logout', to: 'sessions#destroy'
+
+  post '/products/add_to_cart'
+  post '/products/add_to_wishlist'
+  
 resources :users, :products, :wishlists, :carts, :home
 
 

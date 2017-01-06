@@ -7,5 +7,13 @@
 	<li> <%= product.category %> </li>
 	<li> <%= product.description %> </li>
 	<li> <%= product.price %> </li>
+<%= form_tag 'products/add_to_cart' do %>
+	<%= hidden_field_tag :product_id, product.id %>
+	<%= submit_tag "Add to Cart", class: "btn" %>
+<% end %>
+<%= form_tag 'products/add_to_wishlist' do %>
+	<%= hidden_field_tag :product_id, product.id %>
+	<%= submit_tag "Add to Wishlist", class: "btn" %>
+<% end %>
 </ul>
 <% end %>
