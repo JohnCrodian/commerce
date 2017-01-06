@@ -42,6 +42,20 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def remove_from_cart
+    @product = Product.find(params[:product_id])
+    @user = User.find(session[:user_id])
+    @user.cart.products.delete(@product)
+    redirect_to @user
+end
+
+  def remove_from_wishlist
+    @product = Product.find(params[:product_id])
+    @user = User.find(session[:user_id])
+    @user.wishlist.products.delete(@product)
+    redirect_to @user
+end
+
   def search (term)
 
    Product.where("name LIKE (?) OR category LIKE (?)", "%#{term}%", "%#{term}%")

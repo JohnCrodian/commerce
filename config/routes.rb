@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   post '/products/add_to_cart'
   post '/products/add_to_wishlist'
+
+  post '/products/remove_from_cart'
+
+  post '/products/remove_from_wishlist'
   
 resources :users, :products, :wishlists, :carts, :home
 

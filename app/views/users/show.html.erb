@@ -4,6 +4,25 @@
 <% if logged_in? %>
 <%= link_to "Log out", logout_path, method: :destroy %>
 
+<h2>My Cart</h2>
+<% @cartproducts.each do |product| %>
+	<p><%= product.name %>, <%= product.price %></p>
+	<% @carttotal = @carttotal + product.price %>
+	<%= form_tag '/products/remove_from_cart' do %>
+	<%= hidden_field_tag :product_id, product.id %>
+	<%= submit_tag "Remove from Cart", class: "btn" %>
+<% end %>
+<% end %>
+	<p> <%= @carttotal %> </p>
+
+<h2>My Wishlist</h2>
+<% @wishlistproducts.each do |product| %>
+	<p> <%= product.name %> </p>
+	<%= form_tag '/products/remove_from_wishlist' do %>
+	<%= hidden_field_tag :product_id, product.id %>
+	<%= submit_tag "Remove from Wishlist", class: "btn" %>
+<% end %>
+<% end %>
 
 <% else %>
 

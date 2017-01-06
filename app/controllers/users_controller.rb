@@ -2,9 +2,13 @@ class UsersController < ApplicationController
  
 
   def index
+
   end
 
   def show
+    @cartproducts = User.find(params[:id]).cart.products
+    @wishlistproducts = User.find(params[:id]).wishlist.products
+    @carttotal = 0
   end
 
   def new
