@@ -10,14 +10,16 @@ class SessionsController < ApplicationController
   	user = User.where(email: params[:session][:email].downcase).first
   	if user.password == params[:session][:password]
   		session[:user_id] = user.id
+  		flash[:alert] = "Hello"
   		redirect_to user
   	else
   	render 'new'
-  end
+end
 end
 
 def destroy
 	session[:user_id] = nil
 	redirect_to '/'
 end
+
 end

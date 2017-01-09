@@ -5,6 +5,3 @@ class Product < ApplicationRecord
 	has_many :wishlists, through: :wish_adds
 end
 
-def search(search)
-  self.where("name LIKE (?) OR category LIKE (?)", "%#{search}%", "%#{search}%")
-end

@@ -15,8 +15,13 @@ def index
   end
 
   def update
+    @cart = Cart.find(params[:cart_id])
+    @cart.products =[]
+    redirect_back(fallback_location: '/')
   end
 
   def destroy
   end
+
+
 end

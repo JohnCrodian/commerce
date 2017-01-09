@@ -14,6 +14,12 @@
 <% end %>
 <% end %>
 	<p> <%= @carttotal %> </p>
+	<%= form_tag '/carts/update' do %>
+	<%= hidden_field_tag :cart_id, @user.cart.id %>
+	<%= submit_tag "Checkout", class: "btn" %>
+	<% end %>
+
+	<h1><%= @user.cart.id %></h1>
 
 <h2>My Wishlist</h2>
 <% @wishlistproducts.each do |product| %>
@@ -24,6 +30,5 @@
 <% end %>
 <% end %>
 
-<% else %>
 
 <% end %>

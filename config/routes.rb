@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post '/products/remove_from_cart'
 
   post '/products/remove_from_wishlist'
+
+  post '/carts/update'
   
 resources :users, :products, :wishlists, :carts, :home
 
