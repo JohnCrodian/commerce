@@ -20,8 +20,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create (user_params)
+    session[:user_id] = @user.id
       if @user.save
     Wishlist.create(user_id: @user.id)
+    Cart.create(user_id: @user.id)
     redirect_to @user
     flash[:notice] = "Successfully created account"
   else
@@ -51,9 +53,7 @@ end
     @user = User.find(params[:id])
   end
 
-  def create_users_cart
-    Cart.create(user_id: @user.id)
-  end
+
     
 
 end
